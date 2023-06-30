@@ -1,0 +1,53 @@
+/* Estilos para la barra de navegación personalizada */
+.navbar-custom {
+    background-color: #1C4C96;
+}
+
+/* Estilos para la cabecera de la tabla */
+table.dataTable thead .table-header {
+    background-color: #1C4C96;
+    color: #fff;
+}
+
+/* Agrega tus estilos personalizados aquí */
+
+/* Por ejemplo, puedes agregar estilos para el encabezado y el contenido */
+header {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center;
+}
+
+h3 {
+    color: #333;
+    font-size: 24px;
+}
+
+/* Estilos para el formulario de filtro */
+#filtro-form {
+    margin-bottom: 20px;
+}
+
+#filtro_predio {
+    /* Estilos personalizados para el select de filtrado */
+}
+
+/* Estilos para la tabla */
+table {
+    width: 100%;
+}
+
+/* Estilos para las celdas de estado */
+.estado-celda {
+    /* Estilos personalizados para las celdas de estado */
+}
+
+/* Estilos para las acciones en la columna de estado */
+.estado-columna span {
+    /* Estilos personalizados para los íconos de acciones */
+}
+
+/* Estilos para los botones de acciones */
+.estado-columna span img {
+    /* Estilos personalizados para los íconos de acciones */
+}

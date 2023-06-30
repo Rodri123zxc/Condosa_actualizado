@@ -1,30 +1,44 @@
-from flask import Blueprint, render_template
-from models import Casa, Predio, Propietario, CasaEstado
+from flask import Blueprint, render_template, request, jsonify
+from models.casa import Casa
+from models.predio import Predio
+from models.tipo_predio import TipoPredio
+from models.casa_estado import CasaEstado
+from models.propietario import Propietario
+from models.persona import Persona
+from sqlalchemy.orm import joinedload
+from sqlalchemy import join
+from utils.db import db
 
-# Crea una instancia de Blueprint para la vista
 vista_bp = Blueprint('vista', __name__)
 
-# Define la ruta principal ("/")
 @vista_bp.route('/')
-def vista():
-    # Obtén la información de las casas y sus relaciones
-    casas = Casa.query.join(Predio).join(Propietario).join(CasaEstado).all()
+def index():
+    casas = db.session.query(
+        Casa.id_casa, Casa.numero, Casa.piso, Casa.area,
+        Predio.descripcion, TipoPredio.nomre_predio, Predio.direccion,
+        Persona.nombres, CasaEstado.descripcion
+    ).select_from(
+        join(Casa, Predio, Casa.id_predio == Predio.id_predio)
+        .join(TipoPredio, Predio.id_tipo_predio == TipoPredio.id_tipo_predio)
+        .join(Propietario, Casa.id_casa == Propietario.id_casa)
+        .join(Persona, Propietario.id_persona == Persona.id_persona)
+        .join(CasaEstado, Casa.id_estado == CasaEstado.id_estado)
+    ).all()
 
-    # Crea una lista para almacenar los datos a mostrar en la tabla
+    predios = db.session.query(Predio.descripcion).distinct().all()
+
     datos = []
+    for casa_id, numero, piso, area, descripcion_predio, tipo_predio, direccion_predio, nombres_propietario, estado_casa in casas:
+        datos.append({
+            'id_casa': casa_id,
+            'numero': numero,
+            'piso': piso,
+            'area': area,
+            'descripcion_predio': descripcion_predio,
+            'tipo_predio': tipo_predio,
+            'direccion_predio': direccion_predio,
+            'nombres_propietario': nombres_propietario,
+            'estado_casa': estado_casa
+        })
 
-    # Recorre cada casa y agrega los campos deseados a la lista de datos
-    for casa in casas:
-        dato = {
-            'id_casa': casa.id_casa,
-            'piso': casa.piso,
-            'area': casa.area,
-            'descripcion': casa.predio.descripcion,
-            'direccion': casa.predio.direccion,
-            'nombres': casa.propietario.persona.nombres,
-            'estado_casa': casa.casa_estado.descripcion
-        }
-        datos.append(dato)
-
-    # Renderiza el template "vista.html" con los datos obtenidos
-    return render_template('vista.html', datos=datos)
+    return render_template('index.html', datos=datos, predios=predios)
