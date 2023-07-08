@@ -36,4 +36,4 @@ def index():
 
         })
 
-    return render_template('index.html', datos1=datos1, Personas=personas)
+    return render_template('index.html', datos1=datos1)
