@@ -28,26 +28,46 @@ h3 {
     margin-bottom: 20px;
 }
 
-#filtro_predio {
-    /* Estilos personalizados para el select de filtrado */
+.navbar-custom {
+    background-color: #1C4C96;
 }
 
-/* Estilos para la tabla */
-table {
+table.dataTable thead .table-header {
+    background-color: #1C4C96;
+    color: #fff;
+}
+
+/* Estilos personalizados */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
 }
 
-/* Estilos para las celdas de estado */
-.estado-celda {
-    /* Estilos personalizados para las celdas de estado */
+.numero-fila {
+   font-weight: normal;
+}
+body {
+    background-image: url('../img/Imgen3.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-/* Estilos para las acciones en la columna de estado */
-.estado-columna span {
-    /* Estilos personalizados para los íconos de acciones */
-}
 
-/* Estilos para los botones de acciones */
-.estado-columna span img {
-    /* Estilos personalizados para los íconos de acciones */
+.table-with-bg {
+    background-color: #fff; /* Color de fondo */
+
+  }
+
+  .dataTables_info {
+    text-align: center;
+    color: #000000;
+    padding: 40px;
+    margin-bottom: 50px;
 }

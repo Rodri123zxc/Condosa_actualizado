@@ -5,6 +5,8 @@
     <title>CONDOSA</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
 
     <style>
         .navbar-custom {
@@ -53,12 +55,12 @@
 
                 </form>
                 <br>
-                <button id="modificacion-masiva" class="btn btn-primary"  style="margin-top: -50px;">Modificar Masivamente</button>
-                <table id="example" class="table table-striped table-bordered" style="width:100%" hidden>
+                <button id="modificacion-masiva" class="btn btn-primary" style="margin-top: -50px;">Modificar Masivamente</button>
+                <table id="example" class="table table-striped table-bordered table-with-bg" style="width:100%" hidden>
                     <thead>
                         <tr>
-                            <th></th>
-                            <th hidden>Id casa</th>
+                            <th style="display: none;">Id casa</th>
+                            <th></th>    
                             <th>#</th>
                             <th>Número de la casa</th>
                             <th>Piso</th>
@@ -70,16 +72,13 @@
                             <th>Estado de la casa</th>
                             <th class="estado-columna">Acciones</th>
                         </tr>
-                    </thead>                   
+                    </thead>
                     <tbody>
-                        {% set contador = 0 %}
                         {% for dato in datos %}
-                        {% if loop.first %}{% set contador = 0 %}{% endif %}
-                        {% set contador = contador + 1 %}
                         <tr>
+                            <td style="display: none;">{{ dato.id_casa }}</td>
                             <td><input type="checkbox" class="seleccionar-casa" data-id="{{ dato.id_casa }}"></td>
-                            <td hidden>{{ dato.id_casa }}</td>
-                            <td></td>
+                            <th class="numero-fila">#</th>
                             <td>{{ dato.numero }}</td>
                             <td>{{ dato.piso }}</td>
                             <td>{{ dato.area }}</td>
@@ -100,16 +99,36 @@
                             </td>
                         </tr>
                         {% endfor %}
-                    </tbody>                                                    
-                </table>              
+                    </tbody>
+                </table>
+                             
             </div>
         </div>
         {% endblock %}
+    </div>
+
+    <div class="footer">
+        <p>CONDOSA 2023 Todos los derechos reservados</p>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            // Obtener todas las filas de la tabla
+            var filas = $('#example tbody tr');
+            
+            // Recorrer cada fila y asignar el número de fila
+            filas.each(function(index) {
+                $(this).find('.numero-fila').text(index + 1);
+            });
+        });
+    </script>
+    
+
 </body>
 </html>

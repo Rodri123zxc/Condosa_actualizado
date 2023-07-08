@@ -32,7 +32,7 @@ function mostrarComboBox(checkImage) {
 
 function guardarEstado(disqueteImage) {
   var trElement = $(disqueteImage).closest('tr');
-  var casaId = trElement.find('td:nth-child(2)').text().trim();
+  var casaId = trElement.find('td:nth-child(1)').text().trim();
   var nuevoEstado = trElement.find('.estado-celda select').val();
 
   trElement.find('.estado-celda').text(nuevoEstado);
