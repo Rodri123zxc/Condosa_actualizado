@@ -8,7 +8,7 @@ from utils.db import db
 
 vista2_bp = Blueprint('vista2', __name__)  # Cambio de 'vista_bp' a 'vista2_bp'
 
-@vista2_bp.route('/reniec')  # Cambio de 'vista_bp.route' a 'vista2_bp.route'
+@vista2_bp.route('/reniec.html')  # Cambio de 'vista_bp.route' a 'vista2_bp.route'
 def reniec():  # Cambio de 'index' a 'reniec'
     Personas = db.session.query(
         Persona.ndocumento, Persona.nombres, Persona.apellido_materno, Persona.apellido_paterno,
@@ -16,7 +16,7 @@ def reniec():  # Cambio de 'index' a 'reniec'
         Solicitante.telefono, Solicitante.correo
     ).select_from(
         join(Persona, Solicitante, Persona.id_persona == Solicitante.id_solicitante)
-        .join(Ubigeo, Ubigeo.id_ubigeo == Persona.id_ubigeo)
+        .join(Ubigeo, Ubigeo.idubigeo == Persona.idubigeo)
     ).all()
 
     datos1 = []

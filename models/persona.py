@@ -10,9 +10,9 @@ class Persona(db.Model):
     id_tipo_documento = db.Column(db.Integer, db.ForeignKey('tipo_documento.id_tipo_documento'))
     ndocumento = db.Column(db.String(15))
     direccion = db.Column(db.String(150))
-    id_ubigeo = db.Column(db.String(6), db.ForeignKey('ubigeo.id_ubigeo'))
+    idubigeo = db.Column(db.String(6), db.ForeignKey('ubigeo.id_ubigeo'))
 
-    def __init__(self, apellido_paterno, apellido_materno, nombres, fecha_nacimiento, id_tipo_documento, ndocumento, direccion, id_ubigeo):
+    def __init__(self, apellido_paterno, apellido_materno, nombres, fecha_nacimiento, id_tipo_documento, ndocumento, direccion, idubigeo):
         self.apellido_paterno = apellido_paterno
         self.apellido_materno = apellido_materno
         self.nombres = nombres
@@ -20,4 +20,4 @@ class Persona(db.Model):
         self.id_tipo_documento = id_tipo_documento
         self.ndocumento = ndocumento
         self.direccion = direccion
-        self.id_ubigeo = id_ubigeo
+        self.idubigeo = id_ubigeo

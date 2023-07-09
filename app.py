@@ -1,9 +1,6 @@
 from flask import Flask
 from utils.config import Config
 from utils.db import db
-from routes.Actualizar import actualizar_bp
-from routes.vista import vista_bp
-from routes.vista2 import vista2_bp
 
 def crear_app():
     app = Flask(__name__)
@@ -27,6 +24,10 @@ def crear_app():
 
 # INSTANCIAR LA APP
 app = crear_app()
+
+@app.route('/reniec')
+def reniec():
+    return render_template('reniec.html')
 
 # METODO MAIN
 if __name__ == '__main__':
