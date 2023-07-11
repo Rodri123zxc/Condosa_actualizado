@@ -5,6 +5,8 @@ from models.solicitante import Solicitante
 from sqlalchemy.orm import joinedload
 from sqlalchemy import join
 from utils.db import db
+from datetime import date
+import json
 
 vista2_bp = Blueprint('vista2', __name__)  # Cambio de 'vista_bp' a 'vista2_bp'
 
@@ -35,4 +37,35 @@ def reniec():  # Cambio de 'index' a 'reniec'
             'Correo': correo
         })
 
-    return render_template('reniec.html', datos1=datos1)
+    return render_template('reniec.html',datos1=datos1)
+
+
+def calcular_edad(fecha_nacimiento):
+    hoy = date.today()
+    edad = hoy.year - fecha_nacimiento.year
+    if hoy.month < fecha_nacimiento.month or (hoy.month == fecha_nacimiento.month and hoy.day < fecha_nacimiento.day):
+        edad -= 1
+    return edad
+
+@vista2_bp.route('/buscar_persona', methods=['POST'])
+def buscar_persona():
+    dni = request.form['dni']
+
+    persona = db.session.query(Persona).filter_by(ndocumento=dni).first()
+
+    if persona:
+        datos = {
+            'encontrada': True,
+            'edad': calcular_edad(persona.fecha_nacimiento),
+            'fecha_nacimiento': persona.fecha_nacimiento,
+            'direccion': persona.direccion,
+            'departamento': persona.ubigeo.departamento,
+            'provincia': persona.ubigeo.provincia,
+            'distrito': persona.ubigeo.distrito,
+            'telefono': persona.solicitante.telefono,
+            'correo': persona.solicitante.correo
+        }
+    else:
+        datos = {'encontrada': False}
+
+    return jsonify(datos)
