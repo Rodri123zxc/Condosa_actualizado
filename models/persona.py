@@ -12,6 +12,8 @@ class Persona(db.Model):
     direccion = db.Column(db.String(150))
     idubigeo = db.Column(db.String(6), db.ForeignKey('ubigeo.id_ubigeo'))
 
+    solicitante = db.relationship('Solicitante', backref='persona', uselist=False)
+    
     def __init__(self, apellido_paterno, apellido_materno, nombres, fecha_nacimiento, id_tipo_documento, ndocumento, direccion, idubigeo):
         self.apellido_paterno = apellido_paterno
         self.apellido_materno = apellido_materno
@@ -20,4 +22,4 @@ class Persona(db.Model):
         self.id_tipo_documento = id_tipo_documento
         self.ndocumento = ndocumento
         self.direccion = direccion
-        self.idubigeo = id_ubigeo
+        self.idubigeo = idubigeo

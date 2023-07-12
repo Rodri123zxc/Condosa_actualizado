@@ -59,12 +59,23 @@ def buscar_persona():
             'edad': calcular_edad(persona.fecha_nacimiento),
             'fecha_nacimiento': persona.fecha_nacimiento,
             'direccion': persona.direccion,
-            'departamento': persona.ubigeo.departamento,
-            'provincia': persona.ubigeo.provincia,
-            'distrito': persona.ubigeo.distrito,
-            'telefono': persona.solicitante.telefono,
-            'correo': persona.solicitante.correo
+            'departamento': None,
+            'provincia': None,
+            'distrito': None,
+            'telefono': None,
+            'correo': None
         }
+
+        if persona.solicitante:
+            datos['telefono'] = persona.solicitante.telefono
+            datos['correo'] = persona.solicitante.correo
+
+        ubigeo = db.session.query(Ubigeo).get(persona.idubigeo)
+        if ubigeo:
+            datos['departamento'] = ubigeo.departamento
+            datos['provincia'] = ubigeo.provincia
+            datos['distrito'] = ubigeo.distrito
+
     else:
         datos = {'encontrada': False}
 

@@ -1,50 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8">
-    <title>Reniec</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">  
-    <script src="ruta/al/archivo.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <title>Reniec</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">  
+</head>
+<body>
+  <div id="header">
+    <h1>CONDOSA</h1>
+  </div>
+  <div id="content">
+    <div class="left">
+      <h2>Registro de la Persona en la RENIEC</h2>
+      <div>
+        <label for="dni-input">DNI:</label>
+        <input type="text" id="dni-input" name="dni">
+        <img id="lupa-icon" src="static/img/lupa.jpg" alt="Lupa" onclick="buscarPersona()">
+      </div>
+    </div>
+    <div class="right">
+      <div class="foto-info-container">
+        <div class="foto-container">
+          <img class="foto" src="static/img/foto.jpg" alt="Imagen de la persona">
+        </div>
+        <div class="info-box">
+          <h3>Información personal:</h3>
+          <p>Edad: <span id="edad"></span></p>
+          <p>Fecha de nacimiento: <span id="fecha-nacimiento"></span></p>
+          <p>Dirección: <span id="direccion"></span></p>
+          <p>Departamento: <span id="departamento"></span></p>
+          <p>Provincia: <span id="provincia"></span></p>
+          <p>Distrito: <span id="distrito"></span></p>
+          <p>Teléfono: <span id="telefono"></span></p>
+          <p>Correo: <span id="correo"></span></p>
+          <p id="mensaje"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <p>CONDOSA 2023 TODOS LOS DERECHOS RESERVADOS</p>
+  </div>
 
-  <body>
-    <div id="header">
-      <h1>CONDOSA</h1>
-    </div>
-    <div id="content">
-      <div class="left">
-          <h2>Registro de la Persona en la RENIEC</h2>
-          <div>
-              <label for="dni-input">DNI:</label>
-              <input type="text" id="dni-input" name="dni">
-              <img id="lupa-icon" src="static/img/lupa.jpg" alt="Lupa" onclick="buscarPersona()">
-          </div>
-      </div>
-      <div class="right">
-          <div class="foto-info-container">
-              <div class="foto-container">
-                  <img class="foto" src="static/img/foto.jpg" alt="Imagen de la persona">
-              </div>
-              <div class="info-box">
-                  <h3>Información personal:</h3>
-                  <p>Edad: <span id="edad"></span></p>
-                  <p>Fecha de nacimiento: <span id="fecha-nacimiento"></span></p>
-                  <p>Dirección: <span id="direccion"></span></p>
-                  <p>Departamento: <span id="departamento"></span></p>
-                  <p>Provincia: <span id="provincia"></span></p>
-                  <p>Distrito: <span id="distrito"></span></p>
-                  <p>Teléfono: <span id="telefono"></span></p>
-                  <p>Correo: <span id="correo"></span></p>
-                  <p id="mensaje"></p>
-              </div>
-          </div>
-      </div>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <input type="hidden" id="datos1-json" value="{{ datos1_json }}">
-      <script src="{{ url_for('static', filename='js/reniec.js') }}"></script>
-    </div>
-    <div id="footer">
-      <p>CONDOSA 2023 TODOS LOS DERECHOS RESERVADOS</p>
-    </div>
-  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="static/js/recien.js"></script>
+</body>
 </html>
