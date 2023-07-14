@@ -22,8 +22,28 @@ function buscarPersona() {
   function ocultarMensajeNoEncontrado() {
     $("#mensaje").text("");
   }
+  function mostrarMensajeNoEncontrado() {
+    $("#mensaje").text("Persona no encontrada.");
+    resetearDatosPersona();
+    $("#mensaje").css({
+      "font-size": "24px",
+      "color": "red"
+    });
+  }
+
+  function mostrarMensajeError() {
+    $("#mensaje").text("Error al buscar la persona.");
+    resetearDatosPersona();
+    $("#mensaje").css({
+      "font-size": "24px",
+      "color": "red"
+    });
+  }
 
   function mostrarDatosPersona(datos) {
+    $("#nombres").text(datos.nombres);
+    $("#apellido_paterno").text(datos.apellido_paterno);
+    $("#apellido_materno").text(datos.apellido_materno);
     $("#edad").text(datos.edad);
     $("#fecha-nacimiento").text(datos.fecha_nacimiento);
     $("#direccion").text(datos.direccion);
@@ -34,17 +54,12 @@ function buscarPersona() {
     $("#correo").text(datos.correo);
   }
 
-  function mostrarMensajeNoEncontrado() {
-    $("#mensaje").text("Persona no encontrada.");
-    resetearDatosPersona();
-  }
 
-  function mostrarMensajeError() {
-    $("#mensaje").text("Error al buscar la persona.");
-    resetearDatosPersona();
-  }
 
   function resetearDatosPersona() {
+    $("#nombres").text("");
+    $("#apellido_paterno").text("");
+    $("#apellido_materno").text("");
     $("#edad").text("");
     $("#fecha-nacimiento").text("");
     $("#direccion").text("");

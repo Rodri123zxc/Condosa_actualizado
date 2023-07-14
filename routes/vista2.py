@@ -56,6 +56,9 @@ def buscar_persona():
     if persona:
         datos = {
             'encontrada': True,
+            'nombres':persona.nombres,
+            'apellido_paterno': persona.apellido_paterno,
+            'apellido_materno': persona.apellido_materno,
             'edad': calcular_edad(persona.fecha_nacimiento),
             'fecha_nacimiento': persona.fecha_nacimiento,
             'direccion': persona.direccion,

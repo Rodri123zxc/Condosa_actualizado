@@ -1,11 +1,11 @@
 /* Estilos para la barra de navegación personalizada */
 .navbar-custom {
-    background-color: #1C4C96;
+    background-color: #1F3A5D;
 }
 
 /* Estilos para la cabecera de la tabla */
 table.dataTable thead .table-header {
-    background-color: #1C4C96;
+    background-color: #1F3A5D;
     color: #fff;
 }
 
@@ -29,11 +29,11 @@ h3 {
 }
 
 .navbar-custom {
-    background-color: #1C4C96;
+    background-color: #1F3A5D;
 }
 
 table.dataTable thead .table-header {
-    background-color: #1C4C96;
+    background-color: #1F3A5D;
     color: #fff;
 }
 
@@ -43,7 +43,7 @@ table.dataTable thead .table-header {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #000;
+    background-color: #1F3A5D;
     color: #fff;
     padding: 10px;
     text-align: center;
