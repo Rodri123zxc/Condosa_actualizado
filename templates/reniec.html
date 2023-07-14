@@ -3,37 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>Reniec</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">  
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type='text/css' media='screen' href="{{ url_for('static', filename='css/style2.css') }}">  
 </head>
-<body>
+<body style="background-image: url('static/img/fondoreniec.jpg');">
   <div id="header">
     <h1>CONDOSA</h1>
   </div>
   <div id="content">
     <div class="left">
       <h2>Registro de la Persona en la RENIEC</h2>
-      <div>
-        <label for="dni-input">DNI:</label>
+      <div class="dni-container">
+        <span id="dni-span" style="color: #fff; margin-right: 10px;">DNI:</span>
+        <label for="dni-input"></label>
         <input type="text" id="dni-input" name="dni">
         <img id="lupa-icon" src="static/img/lupa.jpg" alt="Lupa" onclick="buscarPersona()">
       </div>
+      <span class="instruction-text">Ingrese el número de DNI de la Persona para buscarlo en la base de datos de la RENIEC</span>
     </div>
     <div class="right">
       <div class="foto-info-container">
         <div class="foto-container">
-          <img class="foto" src="static/img/foto.jpg" alt="Imagen de la persona">
+          <img class="foto" src="static/img/avatar.jpg" alt="Imagen de la persona">
         </div>
         <div class="info-box">
-          <h3>Información personal:</h3>
-          <p>Edad: <span id="edad"></span></p>
-          <p>Fecha de nacimiento: <span id="fecha-nacimiento"></span></p>
-          <p>Dirección: <span id="direccion"></span></p>
-          <p>Departamento: <span id="departamento"></span></p>
-          <p>Provincia: <span id="provincia"></span></p>
-          <p>Distrito: <span id="distrito"></span></p>
-          <p>Teléfono: <span id="telefono"></span></p>
-          <p>Correo: <span id="correo"></span></p>
-          <p id="mensaje"></p>
+          <div class="info-personal">
+            <h3>Información personal:</h3>
+            <p>Edad: <span id="edad"></span></p>
+            <p>Fecha de nacimiento: <span id="fecha-nacimiento"></span></p>
+            <p>Dirección: <span id="direccion"></span></p>
+            <p>Departamento: <span id="departamento"></span></p>
+            <p>Provincia: <span id="provincia"></span></p>
+            <p>Distrito: <span id="distrito"></span></p>
+            <p>Teléfono: <span id="telefono"></span></p>
+            <p>Correo: <span id="correo"></span></p>
+            <p id="mensaje"></p>
+          </div>
         </div>
       </div>
     </div>
