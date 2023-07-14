@@ -8,6 +8,7 @@ function buscarPersona() {
       success: function(response) {
         if (response.encontrada) {
           mostrarDatosPersona(response);
+          ocultarMensajeNoEncontrado();
         } else {
           mostrarMensajeNoEncontrado();
         }
@@ -16,6 +17,10 @@ function buscarPersona() {
         mostrarMensajeError();
       }
     });
+  }
+
+  function ocultarMensajeNoEncontrado() {
+    $("#mensaje").text("");
   }
 
   function mostrarDatosPersona(datos) {
